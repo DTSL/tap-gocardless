@@ -19,20 +19,20 @@ def sync(
     catalog: Catalog,
 ):
     #####################
-    LOGGER.info("###### DEBUG #######")
-    LOGGER.info(f"{config=}")
-    LOGGER.info(f"{state=}")
-    LOGGER.info(f"{catalog.to_dict()=}")
-    LOGGER.info("###### DEBUG #######")
+    LOGGER.debug("###### DEBUG #######")
+    LOGGER.debug(f"{config=}")
+    LOGGER.debug(f"{state=}")
+    LOGGER.debug(f"{catalog.to_dict()=}")
+    LOGGER.debug("###### DEBUG #######")
     ###################
 
     """Sync data from tap source"""
     # Loop over selected streams in catalog
     for stream in catalog.get_selected_streams(state):
-        LOGGER.info("###### DEBUG #######")
-        LOGGER.info(f"{stream.to_dict()=}")
-        LOGGER.info("###### DEBUG #######")
-        ###################
+
+        LOGGER.debug("###### DEBUG #######")
+        LOGGER.debug(f"{stream.to_dict()=}")
+        LOGGER.debug("###### DEBUG #######")
 
         LOGGER.info("Syncing stream:" + stream.tap_stream_id)
 
@@ -83,11 +83,10 @@ def sync(
             or current_initial_full_table_complete
         ):
             stream_state.pop("initial_full_table_complete")
-            # rows = get_incremental_rows(tap_data, stream_state, stream)
-            pass
+            rows = get_incremental_rows(tap_data, stream_state, stream)
+
         elif stream.replication_method == "FULL_TABLE":
-            # rows = get_full_rows(tap_data, stream)
-            pass
+            rows = get_full_rows(tap_data, stream)
         else:
             raise Exception(
                 "only FULL_TABLE, and INCREMENTAL replication \
@@ -119,7 +118,9 @@ def sync(
         # Write the bootmark
         singer.write_state(state)
 
-        LOGGER.info(f"BBA: {state=}")
+        LOGGER.debug("###### DEBUG #######")
+        LOGGER.debug(f"{state=}")
+        LOGGER.debug("###### DEBUG #######")
 
     return
 
