@@ -19,9 +19,9 @@ def sync(
     catalog: Catalog,
 ):
     LOGGER.debug("###### DEBUG #######")
-    LOGGER.debug(f"{config=}")
-    LOGGER.debug(f"{state=}")
-    LOGGER.debug(f"{catalog.to_dict()=}")
+    LOGGER.debug(f"config = {config}")
+    LOGGER.debug(f"state= {state}")
+    LOGGER.debug(f"catalog.to_dict()= {catalog.to_dict()}")
     LOGGER.debug("###### DEBUG #######")
 
     """Sync data from tap source"""
@@ -33,7 +33,7 @@ def sync(
         else:
 
             LOGGER.debug("###### DEBUG #######")
-            LOGGER.debug(f"{stream.to_dict()=}")
+            LOGGER.debug(f"stream.to_dict() = {stream.to_dict()}")
             LOGGER.debug("###### DEBUG #######")
 
             LOGGER.info("Syncing stream:" + stream.tap_stream_id)
@@ -139,7 +139,7 @@ def sync(
                 sync_child(gocardless_client, config, state, catalog,    stream_child,  ids_for_child)
 
             LOGGER.debug("###### DEBUG #######")
-            LOGGER.debug(f"{state=}")
+            LOGGER.debug(f"state= {state}")
             LOGGER.debug("###### DEBUG #######")
 
     return
