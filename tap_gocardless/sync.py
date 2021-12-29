@@ -82,7 +82,7 @@ def sync(
             stream.replication_method == "INCREMENTAL"
             or current_initial_full_table_complete
         ):
-            stream_state.pop("initial_full_table_complete")
+            stream_state.pop("initial_full_table_complete", None)
             rows = get_incremental_rows(tap_data, stream_state, stream)
 
         elif stream.replication_method == "FULL_TABLE":
@@ -95,18 +95,22 @@ def sync(
                 )
             )
 
+        max_bookmark = None
         for row in rows:
             # write one or more rows to the stream:
             singer.write_records(stream.tap_stream_id, [row])
 
-            if "bookmark" in STREAMS[stream.tap_stream_id]["bookmark"]:
+            if "bookmark" in STREAMS[stream.tap_stream_id]:
+                if not max_bookmark:
+                    max_bookmark = row[STREAMS[stream.tap_stream_id]["bookmark"]]
                 max_bookmark = max(
                     max_bookmark, row[STREAMS[stream.tap_stream_id]["bookmark"]]
                 )
 
-                state = singer.write_bookmark(
+                singer.write_bookmark(
                     state, stream.tap_stream_id, stream.replication_key, max_bookmark
                 )
+
 
         state = singer.write_bookmark(
             state, stream.tap_stream_id, "initial_full_table_complete", True
@@ -127,6 +131,7 @@ def sync(
 
 def get_incremental_rows(tap_data: Callable, stream_state: dict, stream):
     params = copy.deepcopy(stream_state)
+    params['limit'] = 100
     more_records = True
     total_cnt = 0
     while more_records:

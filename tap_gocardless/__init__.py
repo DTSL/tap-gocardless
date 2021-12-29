@@ -26,13 +26,15 @@ def main():
     if args.discover:
         catalog = discover()
         catalog.dump()
+        return
     # Otherwise run in sync mode
     else:
         if args.catalog:
             catalog = args.catalog
         else:
             catalog = discover()
-        sync(gocardless_client, args.config, args.state, catalog)
+
+    sync(gocardless_client, args.config, args.state, catalog)
 
 
 if __name__ == "__main__":

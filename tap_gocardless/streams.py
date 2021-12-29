@@ -48,7 +48,7 @@ STREAMS: MappingProxyType = MappingProxyType(
             "bookmark": "created_at",
         },
         "payout_items": {
-            "key_properties": "id",
+            "key_properties": "payout",
             "replication_method": "FULL_TABLE",
             "replication_key": "created_at[gt]",
             "bookmark": "created_at",
