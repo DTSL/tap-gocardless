@@ -1,7 +1,112 @@
 {
-	"selected": false,
-    "type": ["null", "object"],
-    "additionalProperties": false,
-    "properties": {
+  "selected": true,
+  "type": [
+    "null",
+    "object"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "id": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "created_at": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "email": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "given_name": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "family_name": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "company_name": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "address_line1": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "address_line2": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "address_line3": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "city": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "region": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "postal_code": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "country_code": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "language": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "swedish_identity_number": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "danish_identity_number": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "phone_number": {
+      "type": [
+        "null",
+        "string"
+      ]
     }
+  }
 }

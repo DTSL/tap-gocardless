@@ -1,7 +1,170 @@
 {
-	"selected": false,
-    "type": ["null", "object"],
-    "additionalProperties": false,
-    "properties": {
+  "selected": false,
+  "type": [
+    "null",
+    "object"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "id": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "created_at": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "url": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "request_headers": {
+      "type": [
+        "null",
+        "object"
+      ],
+      "properties": {
+        "Origin": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "User-Agent": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "Content-Type": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "Webhook-Signature": {
+          "type": [
+            "null",
+            "string"
+          ]
+        }
+      }
+    },
+    "request_body": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "response_code": {
+      "type": [
+        "null",
+        "integer"
+      ]
+    },
+    "response_body": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "response_body_truncated": {
+      "type": [
+        "null",
+        "boolean"
+      ]
+    },
+    "response_headers": {
+      "type": [
+        "null",
+        "object"
+      ],
+      "properties": {
+        "date": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "cf-ray": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "server": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "expect-ct": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "connection": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "x-sib-server": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "cf-cache-status": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "x-xss-protection": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "x-content-type-options": {
+          "type": [
+            "null",
+            "string"
+          ]
+        }
+      }
+    },
+    "response_headers_content_truncated": {
+      "type": [
+        "null",
+        "boolean"
+      ]
+    },
+    "response_headers_count_truncated": {
+      "type": [
+        "null",
+        "boolean"
+      ]
+    },
+    "is_test": {
+      "type": [
+        "null",
+        "boolean"
+      ]
+    },
+    "successful": {
+      "type": [
+        "null",
+        "boolean"
+      ]
     }
+  }
 }

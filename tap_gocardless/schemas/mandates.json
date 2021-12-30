@@ -1,7 +1,92 @@
 {
-	"selected": false,
-    "type": ["null", "object"],
-    "additionalProperties": false,
-    "properties": {
+  "selected": true,
+  "type": [
+    "null",
+    "object"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "id": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "created_at": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "reference": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "status": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "scheme": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "next_possible_charge_date": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "payments_require_approval": {
+      "type": [
+        "null",
+        "boolean"
+      ]
+    },
+    "metadata": {
+      "type": [
+        "null",
+        "object"
+      ],
+      "properties": {
+        "client_id": {
+          "type": [
+            "null",
+            "string"
+          ]
+        }
+      }
+    },
+    "links": {
+      "type": [
+        "null",
+        "object"
+      ],
+      "properties": {
+        "customer_bank_account": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "creditor": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "customer": {
+          "type": [
+            "null",
+            "string"
+          ]
+        }
+      }
     }
+  }
 }

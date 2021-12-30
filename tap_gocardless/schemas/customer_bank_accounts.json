@@ -1,7 +1,77 @@
 {
-	"selected": false,
-    "type": ["null", "object"],
-    "additionalProperties": false,
-    "properties": {
+  "selected": true,
+  "type": [
+    "null",
+    "object"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "id": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "created_at": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "account_number_ending": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "account_holder_name": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "account_type": {
+      "type": [
+        "null"
+      ]
+    },
+    "bank_name": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "currency": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "country_code": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "enabled": {
+      "type": [
+        "null",
+        "boolean"
+      ]
+    },
+    "links": {
+      "type": [
+        "null",
+        "object"
+      ],
+      "properties": {
+        "customer": {
+          "type": [
+            "null",
+            "string"
+          ]
+        }
+      }
     }
+  }
 }

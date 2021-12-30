@@ -1,7 +1,10 @@
 {
-	"selected": false,
-    "type": ["null", "object"],
-    "additionalProperties": false,
-    "properties": {
-    }
+  "selected": false,
+  "type": [
+    "null",
+    "object"
+  ],
+  "additionalProperties": true,
+  "properties": {
+  }
 }

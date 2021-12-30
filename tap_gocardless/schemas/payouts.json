@@ -1,7 +1,122 @@
 {
-	"selected": false,
-    "type": ["null", "object"],
-    "additionalProperties": false,
-    "properties": {
+  "selected": true,
+  "type": [
+    "null",
+    "object"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "id": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "amount": {
+      "type": [
+        "null",
+        "integer"
+      ]
+    },
+    "deducted_fees": {
+      "type": [
+        "null",
+        "integer"
+      ]
+    },
+    "currency": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "created_at": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "reference": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "status": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "arrival_date": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "payout_type": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "fx": {
+      "type": [
+        "null",
+        "object"
+      ],
+      "properties": {
+        "fx_currency": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "fx_amount": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "exchange_rate": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "estimated_exchange_rate": {
+          "type": [
+            "null",
+            "string"
+          ]
+        }
+      }
+    },
+    "tax_currency": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "links": {
+      "type": [
+        "null",
+        "object"
+      ],
+      "properties": {
+        "creditor_bank_account": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "creditor": {
+          "type": [
+            "null",
+            "string"
+          ]
+        }
+      }
     }
+  }
 }

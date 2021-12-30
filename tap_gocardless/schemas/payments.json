@@ -1,7 +1,136 @@
 {
-	"selected": false,
-    "type": ["null", "object"],
-    "additionalProperties": false,
-    "properties": {
+  "selected": true,
+  "type": [
+    "null",
+    "object"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "id": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "created_at": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "charge_date": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "amount": {
+      "type": [
+        "null",
+        "integer"
+      ]
+    },
+    "description": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "currency": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "status": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "amount_refunded": {
+      "type": [
+        "null",
+        "integer"
+      ]
+    },
+    "reference": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "metadata": {
+      "type": [
+        "null",
+        "object"
+      ],
+      "properties": {
+        "order_id": {
+          "type": [
+            "null",
+            "string"
+          ]
+        }
+      }
+    },
+    "fx": {
+      "type": [
+        "null",
+        "object"
+      ],
+      "properties": {
+        "fx_currency": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "fx_amount": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "exchange_rate": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "estimated_exchange_rate": {
+          "type": [
+            "null",
+            "string"
+          ]
+        }
+      }
+    },
+    "links": {
+      "type": [
+        "null",
+        "object"
+      ],
+      "properties": {
+        "mandate": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "creditor": {
+          "type": [
+            "null",
+            "string"
+          ]
+        }
+      }
+    },
+    "retry_if_possible": {
+      "type": [
+        "null",
+        "boolean"
+      ]
     }
+  }
 }
