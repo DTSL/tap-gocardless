@@ -46,12 +46,9 @@ STREAMS: MappingProxyType = MappingProxyType(
             "replication_method": "FULL_TABLE",
             "replication_key": "created_at[gt]",
             "bookmark": "created_at",
-            "child": "payout_items"
+            "child": "payout_items",
         },
-        "payout_items": {
-            "key_properties": "payout",
-            "is_child": True
-        },
+        "payout_items": {"key_properties": "payout", "is_child": True},
         "refunds": {
             "key_properties": "id",
             "replication_method": "FULL_TABLE",

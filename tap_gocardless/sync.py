@@ -26,9 +26,9 @@ def sync(
 
     """Sync data from tap source"""
     # Loop over selected streams in catalog
-    for stream in catalog.get_selected_streams(state) :
+    for stream in catalog.get_selected_streams(state):
 
-        if STREAMS[stream.tap_stream_id].get('is_child', False):
+        if STREAMS[stream.tap_stream_id].get("is_child", False):
             LOGGER.info("Syncing child stream later:" + stream.tap_stream_id)
         else:
 
@@ -46,12 +46,6 @@ def sync(
                 state,
                 stream.tap_stream_id,
             )
-
-            # If replication_key is empty set default value to start_date
-            if stream.replication_key not in stream_state:
-                stream_state[stream.replication_key] = config.get("start_date")
-
-            LOGGER.info(f"Stream state: {stream_state}")
 
             # Write the schema
             singer.write_schema(
@@ -75,19 +69,27 @@ def sync(
             current_initial_full_table_complete = singer.get_bookmark(
                 state, stream.tap_stream_id, "initial_full_table_complete", False
             )
-            LOGGER.info(
-                f"replication_method is {stream.replication_method} and initial_full_table_complete is {current_initial_full_table_complete} for :"
-                + stream.tap_stream_id
-            )
 
-            if (
-                stream.replication_method == "INCREMENTAL"
-                or current_initial_full_table_complete
-            ):
+            if stream.replication_method == "INCREMENTAL":
+                LOGGER.info(
+                    f"replication_method is {stream.replication_method} and initial_full_table_complete is {current_initial_full_table_complete} for :"
+                    + stream.tap_stream_id
+                )
+
+                # If replication_key is empty set default value to start_date
+                if stream.replication_key not in stream_state:
+                    stream_state[stream.replication_key] = config.get("start_date")
+
+                LOGGER.info(f"Stream state: {stream_state}")
+
                 stream_state.pop("initial_full_table_complete", None)
                 rows = get_incremental_rows(tap_data, stream_state, stream)
 
             elif stream.replication_method == "FULL_TABLE":
+                LOGGER.info(
+                    f"replication_method is {stream.replication_method} :"
+                    + stream.tap_stream_id
+                )
                 rows = get_full_rows(tap_data, stream)
             else:
                 raise Exception(
@@ -117,12 +119,17 @@ def sync(
                     )
 
                     singer.write_bookmark(
-                        state, stream.tap_stream_id, stream.replication_key, max_bookmark
+                        state,
+                        stream.tap_stream_id,
+                        stream.replication_key,
+                        max_bookmark,
                     )
 
                     # keep key_properties (id) for child
                     if stream_child is not None:
-                        ids_for_child.add(row[STREAMS[stream.tap_stream_id]['key_properties']])
+                        ids_for_child.add(
+                            row[STREAMS[stream.tap_stream_id]["key_properties"]]
+                        )
 
             state = singer.write_bookmark(
                 state, stream.tap_stream_id, "initial_full_table_complete", True
@@ -136,7 +143,14 @@ def sync(
 
             # Sync child
             if stream_child is not None:
-                sync_child(gocardless_client, config, state, catalog,    stream_child,  ids_for_child)
+                sync_child(
+                    gocardless_client,
+                    config,
+                    state,
+                    catalog,
+                    stream_child,
+                    ids_for_child,
+                )
 
             LOGGER.debug("###### DEBUG #######")
             LOGGER.debug(f"state= {state}")
@@ -147,7 +161,7 @@ def sync(
 
 def get_incremental_rows(tap_data: Callable, stream_state: dict, stream):
     params = copy.deepcopy(stream_state)
-    params['limit'] = 100
+    params["limit"] = 100
     more_records = True
     total_cnt = 0
     while more_records:
@@ -177,24 +191,26 @@ def get_full_rows(tap_data: Callable, stream) -> Iterable:
 
     LOGGER.info(f"Total received records {total_cnt} for {stream.tap_stream_id}")
 
+
 def get_individual_rows(tap_data: Callable, stream, key, ids) -> Iterable:
 
     total_cnt = 0
-    for id in  ids:
-        for row in tap_data.list(params={key:id}).records:
+    for id in ids:
+        for row in tap_data.list(params={key: id}).records:
             yield row.attributes
             total_cnt = total_cnt + 1
 
     LOGGER.info(f"Total received records {total_cnt} for {stream.tap_stream_id}")
 
 
-
-def sync_child( gocardless_client: gocardless_pro.Client,
+def sync_child(
+    gocardless_client: gocardless_pro.Client,
     config: dict,
     state: dict,
     catalog: Catalog,
     stream_child,
-    ids):
+    ids,
+):
 
     for stream in catalog.get_selected_streams(state):
         if stream.tap_stream_id == stream_child:
@@ -210,6 +226,8 @@ def sync_child( gocardless_client: gocardless_pro.Client,
 
             tap_data: Callable = getattr(gocardless_client, stream.tap_stream_id)
 
-            for row in get_individual_rows(tap_data, stream, STREAMS[stream.tap_stream_id]['key_properties'], ids):
+            for row in get_individual_rows(
+                tap_data, stream, STREAMS[stream.tap_stream_id]["key_properties"], ids
+            ):
                 # write one or more rows to the stream:
                 singer.write_records(stream.tap_stream_id, [row])
